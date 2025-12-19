@@ -1,0 +1,8 @@
+\doxysection{src/\+File\+Compressor.cpp File Reference}
+\hypertarget{_file_compressor_8cpp}{}\label{_file_compressor_8cpp}\index{src/FileCompressor.cpp@{src/FileCompressor.cpp}}
+{\ttfamily \#include "{}File\+Compressor.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for File\+Compressor.\+cpp\+:
+% FIG 0

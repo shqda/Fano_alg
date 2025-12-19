@@ -1,0 +1,44 @@
+\doxysection{src/cmd\+\_\+flags.cpp File Reference}
+\hypertarget{cmd__flags_8cpp}{}\label{cmd__flags_8cpp}\index{src/cmd\_flags.cpp@{src/cmd\_flags.cpp}}
+{\ttfamily \#include "{}cmd\+\_\+flags.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for cmd\+\_\+flags.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cmd__flags_8cpp_abbf3ddb767cb5a78f3bcb4bf435035f6}{print\+\_\+flags}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{cmd__flags_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{cmd__flags_8cpp_abbf3ddb767cb5a78f3bcb4bf435035f6}\index{cmd\_flags.cpp@{cmd\_flags.cpp}!print\_flags@{print\_flags}}
+\index{print\_flags@{print\_flags}!cmd\_flags.cpp@{cmd\_flags.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_flags()}{print\_flags()}}
+{\footnotesize\ttfamily \label{cmd__flags_8cpp_abbf3ddb767cb5a78f3bcb4bf435035f6} 
+void print\+\_\+flags (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Existing flags\+:
+\begin{DoxyItemize}
+\item {\ttfamily -\/c} ({\bfseries{compress}}) \+: compress a file
+\item {\ttfamily -\/d} ({\bfseries{decompress}}) \+: decompress a file
+\item {\ttfamily -\/t} ({\bfseries{time}}) \+: show execution time
+\item {\ttfamily -\/p} ({\bfseries{print}}) \+: display symbols and codes after successful compression 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{cmd__flags_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{cmd__flags_8cpp_source}{cmd\+\_\+flags.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Usage:\ fano\ <input>\ <output>\ [-\/c\ |\ -\/d]\ [flags]\(\backslash\)n"{}}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Flags:\(\backslash\)n"{}}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \ -\/c\ \ \ Compress\ file\(\backslash\)n"{}}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \ -\/d\ \ \ Decompress\ file\(\backslash\)n"{}}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \ -\/t\ \ \ Measure\ execution\ time\(\backslash\)n"{}}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \ -\/p\ \ \ Print\ code\ table\(\backslash\)n"{}};}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
