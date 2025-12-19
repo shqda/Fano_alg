@@ -1,0 +1,248 @@
+\doxysection{File\+Compressor.\+cpp}
+\hypertarget{_file_compressor_8cpp_source}{}\label{_file_compressor_8cpp_source}\index{src/FileCompressor.cpp@{src/FileCompressor.cpp}}
+\mbox{\hyperlink{_file_compressor_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_file_compressor_8h}{FileCompressor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00012}\mbox{\hyperlink{class_file_compressor_a1831c73242b2a185eadbfc251fbea272}{00012}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a1831c73242b2a185eadbfc251fbea272}{FileCompressor::decompress}}(\textcolor{keyword}{const}\ std::string\&\ filename\_in,\ \textcolor{keyword}{const}\ std::string\&\ filename\_out)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00014}00014\ \ \ \ \ std::fstream\ in(filename\_in,\ std::ios::in\ |\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_abdf3fe353b86c1f022fe69eff09d6e6c}{check\_file\_opened}}(in,\ filename\_in);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00016}00016\ \ \ \ \ std::fstream\ out(filename\_out,\ std::ios::out\ |\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_abdf3fe353b86c1f022fe69eff09d6e6c}{check\_file\_opened}}(out,\ filename\_out);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_af967e8cfb2329e618e507c49334710ba}{load\_archived}}(in);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_ae070b8a0439417042c0cc6d31acd8597}{decode\_bitstream}}(in,\ out);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00031}\mbox{\hyperlink{class_file_compressor_a38d6b00d0e9a95d6e438dace5cd6d495}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a38d6b00d0e9a95d6e438dace5cd6d495}{FileCompressor::compress}}(\textcolor{keyword}{const}\ std::string\&\ filename\_in,\ \textcolor{keyword}{const}\ std::string\&\ filename\_out)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a113ea2fa053c0ef8b52c909429ad41bf}{count\_occurances}}(filename\_in);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_ad99efd6d391f718034408a0bde538896}{sort\_occurances}}();}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_ae152079f947ca2842765e19ca8afd185}{do\_Fano\_Algorithm}}();}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a8fe9681ca40eca99ee1345343f1da9ae}{save\_archived}}(filename\_out,\ filename\_in);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00044}\mbox{\hyperlink{class_file_compressor_a8fe9681ca40eca99ee1345343f1da9ae}{00044}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a8fe9681ca40eca99ee1345343f1da9ae}{FileCompressor::save\_archived}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keyword}{const}\ std::string\&\ input\_file)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00045}00045\ \ \ \ \ std::fstream\ out(filename,\ std::ios::out\ |\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_abdf3fe353b86c1f022fe69eff09d6e6c}{check\_file\_opened}}(out,\ filename);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a2684146d14ead7afb2eb04ae0f7918e7}{write\_code\_table}}(out);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a9fc386a3e9e8fedba3be1a12db7fde8f}{write\_encoded\_data}}(out,\ input\_file);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00058}\mbox{\hyperlink{class_file_compressor_ae152079f947ca2842765e19ca8afd185}{00058}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_ae152079f947ca2842765e19ca8afd185}{FileCompressor::do\_Fano\_Algorithm}}(std::optional<std::span<std::pair<uint8\_t,\ size\_t>>>\ vec,\ \textcolor{keywordtype}{size\_t}\ vec\_sum)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (!vec)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}}.size()\ <=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a0302a7425d48c04cdb435e9525628cea}{supplement\_codes}}(\mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ vec\ =\ std::span(\mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}});}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ vec\_sum\ =\ \mbox{\hyperlink{class_file_compressor_a15147a62856ad2c5267543ae816dce4d}{occur\_sum}};}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{auto}\ occur\ =\ *vec;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (occur.size()\ ==\ 1)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ sum\_prev\ =\ 0,\ sum\_cur\ =\ 0,\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ occur.size()\ \&\&\ sum\_cur\ +\ occur[i].second\ <=\ vec\_sum\ /\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ sum\_cur\ +=\ occur[i++].second;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ left\_sum\ =\ sum\_cur;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ right\_sum\ =\ vec\_sum\ -\/\ left\_sum;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ i\ =\ 1;\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >=\ occur.size())\ i\ =\ occur.size()\ -\/\ 1;\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a0302a7425d48c04cdb435e9525628cea}{supplement\_codes}}(occur.subspan(0,\ i),\ 0);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a0302a7425d48c04cdb435e9525628cea}{supplement\_codes}}(occur.subspan(i),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_ae152079f947ca2842765e19ca8afd185}{do\_Fano\_Algorithm}}(occur.subspan(0,\ i),\ left\_sum);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00087}00087\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_ae152079f947ca2842765e19ca8afd185}{do\_Fano\_Algorithm}}(occur.subspan(i),\ right\_sum);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00095}\mbox{\hyperlink{class_file_compressor_abdf3fe353b86c1f022fe69eff09d6e6c}{00095}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_abdf3fe353b86c1f022fe69eff09d6e6c}{FileCompressor::check\_file\_opened}}(std::fstream\&\ file,\ \textcolor{keyword}{const}\ std::string\&\ filename)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}File:\ "{}}\ +\ filename\ +\ \textcolor{stringliteral}{"{}\ opening\ error"{}});}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00106}\mbox{\hyperlink{class_file_compressor_a113ea2fa053c0ef8b52c909429ad41bf}{00106}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a113ea2fa053c0ef8b52c909429ad41bf}{FileCompressor::count\_occurances}}(\textcolor{keyword}{const}\ std::string\&\ filename)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00107}00107\ \ \ \ \ std::fstream\ file(filename,\ std::ios::binary\ |\ std::ios::in);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_abdf3fe353b86c1f022fe69eff09d6e6c}{check\_file\_opened}}(file,\ filename);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00109}00109\ \ \ \ \ uint8\_t\ character;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{while}\ (file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&character),\ 1))\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::find\_if(\mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}}.begin(),\ \mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}}.end(),}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ [character](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ pair)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ pair.first\ ==\ character;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}}.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ it-\/>second++;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}}.emplace\_back(\ character,\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a15147a62856ad2c5267543ae816dce4d}{occur\_sum}}++;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00130}\mbox{\hyperlink{class_file_compressor_a817f13fc2176e7c8ed8758745e1adce5}{00130}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a817f13fc2176e7c8ed8758745e1adce5}{FileCompressor::print\_codes}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ code]\ :\ \mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}})\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ std::cout\ <<\ symbol\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ y\ :\ code)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ y;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00138}00138\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00144}\mbox{\hyperlink{class_file_compressor_ad99efd6d391f718034408a0bde538896}{00144}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_ad99efd6d391f718034408a0bde538896}{FileCompressor::sort\_occurances}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00145}00145\ \ \ \ \ std::sort(\mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}}.begin(),\ \mbox{\hyperlink{class_file_compressor_ad2ce2898cac2aa4d6b38789f5dc66ccc}{occurrences}}.end(),}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ [](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ pair1,\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ pair2)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ return\ pair1.second\ >\ pair2.second;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00155}\mbox{\hyperlink{class_file_compressor_a0302a7425d48c04cdb435e9525628cea}{00155}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a0302a7425d48c04cdb435e9525628cea}{FileCompressor::supplement\_codes}}(std::optional<std::span<std::pair<uint8\_t,\ size\_t>>>\ span,\ \textcolor{keywordtype}{bool}\ prefix)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{if}\ (!span)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ x\ :\ *span)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}}[x.first].push\_back(prefix);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00159}00159\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00160}00160\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00170}\mbox{\hyperlink{class_file_compressor_a2684146d14ead7afb2eb04ae0f7918e7}{00170}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a2684146d14ead7afb2eb04ae0f7918e7}{FileCompressor::write\_code\_table}}(std::fstream\&\ out)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00171}00171\ \ \ \ \ uint8\_t\ tableSize\ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}}.size());}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00172}00172\ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&tableSize),\ \textcolor{keyword}{sizeof}(tableSize));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ bits]\ :\ \mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}})\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&symbol),\ \textcolor{keyword}{sizeof}(symbol));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ uint8\_t\ bitCount\ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(bits.size());}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&bitCount),\ \textcolor{keyword}{sizeof}(bitCount));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ uint8\_t\ buffer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bitPos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{bool}\ bit\ :\ bits)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ |=\ (bit\ <<\ (7\ -\/\ bitPos));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ bitPos++;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bitPos\ ==\ 8)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&buffer),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bitPos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bitPos\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&buffer),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00193}00193\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00194}00194\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00201}\mbox{\hyperlink{class_file_compressor_a9fc386a3e9e8fedba3be1a12db7fde8f}{00201}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_a9fc386a3e9e8fedba3be1a12db7fde8f}{FileCompressor::write\_encoded\_data}}(std::fstream\&\ out,\ \textcolor{keyword}{const}\ std::string\&\ input\_file)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00202}00202\ \ \ \ \ std::fstream\ in(input\_file,\ std::ios::in\ |\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00203}00203\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_abdf3fe353b86c1f022fe69eff09d6e6c}{check\_file\_opened}}(in,\ input\_file);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ totalBits\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00206}00206\ \ \ \ \ std::vector<uint8\_t>\ data;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00207}00207\ \ \ \ \ uint8\_t\ ch;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00208}00208\ \ \ \ \ \textcolor{keywordflow}{while}\ (in.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&ch),\ 1))\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ data.push\_back(ch);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ totalBits\ +=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}}.at(ch).size());}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00211}00211\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00213}00213\ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&totalBits),\ \textcolor{keyword}{sizeof}(totalBits));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00215}00215\ \ \ \ \ uint8\_t\ buffer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00216}00216\ \ \ \ \ \textcolor{keywordtype}{int}\ bitPos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ c\ :\ data)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ bits\ =\ \mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}}.at(c);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{bool}\ bit\ :\ bits)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ |=\ (bit\ <<\ (7\ -\/\ bitPos));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ bitPos++;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bitPos\ ==\ 8)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&buffer),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bitPos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00228}00228\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00229}00229\ \ \ \ \ \textcolor{keywordflow}{if}\ (bitPos\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ out.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&buffer),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00231}00231\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00232}00232\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00238}\mbox{\hyperlink{class_file_compressor_af967e8cfb2329e618e507c49334710ba}{00238}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_af967e8cfb2329e618e507c49334710ba}{FileCompressor::load\_archived}}(std::fstream\&\ file)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00239}00239\ \ \ \ \ uint8\_t\ tableSize;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00240}00240\ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&tableSize),\ \textcolor{keyword}{sizeof}(tableSize));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00241}00241\ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}}.clear();}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00243}00243\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ tableSize;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ uint8\_t\ symbol,\ bitCount;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&symbol),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&bitCount),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ std::vector<bool>\ bits;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ bits.reserve(bitCount);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bitsRead\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (bitsRead\ <\ bitCount)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ byte;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&\textcolor{keywordtype}{byte}),\ 1);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ b\ =\ 0;\ b\ <\ 8\ \&\&\ bitsRead\ <\ bitCount;\ ++b)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ bit\ =\ (\textcolor{keywordtype}{byte}\ >>\ (7\ -\/\ b))\ \&\ 1;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bits.push\_back(bit);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bitsRead++;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}}[symbol]\ =\ bits;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00261}00261\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00262}00262\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00268}\mbox{\hyperlink{class_file_compressor_a5e34939c4fcd744b62bb0d399236287f}{00268}}\ std::map<std::vector<bool>,\ uint8\_t>\ \mbox{\hyperlink{class_file_compressor_a5e34939c4fcd744b62bb0d399236287f}{FileCompressor::make\_code\_to\_symbol\_map}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00269}00269\ \ \ \ \ std::map<std::vector<bool>,\ uint8\_t>\ code\_to\_symbol;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00270}00270\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ bits]\ :\ \mbox{\hyperlink{class_file_compressor_a421e8e105f61791a30f55f7f078d1976}{codes}})\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ code\_to\_symbol[bits]\ =\ symbol;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00272}00272\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00273}00273\ \ \ \ \ \textcolor{keywordflow}{return}\ code\_to\_symbol;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00274}00274\ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00280}\mbox{\hyperlink{class_file_compressor_ae070b8a0439417042c0cc6d31acd8597}{00280}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_compressor_ae070b8a0439417042c0cc6d31acd8597}{FileCompressor::decode\_bitstream}}(std::fstream\&\ in,\ std::fstream\&\ out)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00281}00281\ \ \ \ \ std::map<std::vector<bool>,\ uint8\_t>\ code\_to\_symbol;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00282}00282\ \ \ \ \ code\_to\_symbol\ =\ \mbox{\hyperlink{class_file_compressor_a5e34939c4fcd744b62bb0d399236287f}{make\_code\_to\_symbol\_map}}();}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ totalBits;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00285}00285\ \ \ \ \ in.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&totalBits),\ \textcolor{keyword}{sizeof}(totalBits));}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00287}00287\ \ \ \ \ std::vector<bool>\ bitsBuffer;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00288}00288\ \ \ \ \ bitsBuffer.reserve(256);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00290}00290\ \ \ \ \ uint8\_t\ byte;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{keywordtype}{int}\ bitPos\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00292}00292\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ bitsRead\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00294}00294\ \ \ \ \ \textcolor{keywordflow}{while}\ (bitsRead\ <\ totalBits)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bitPos\ ==\ 8)\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&\textcolor{keywordtype}{byte}),\ 1))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ bitPos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ bit\ =\ (\textcolor{keywordtype}{byte}\ >>\ (7\ -\/\ bitPos))\ \&\ 1;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ bitsBuffer.push\_back(bit);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ bitPos++;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ bitsRead++;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ code\_to\_symbol.find(bitsBuffer);}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ code\_to\_symbol.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ out\ <<\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ bitsBuffer.clear();}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00311}00311\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_file_compressor_8cpp_source_l00312}00312\ \}}
+
+\end{DoxyCode}
